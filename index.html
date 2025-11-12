@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            font-family: monospace;
+        }
+
+        header {
+            padding: 1rem;
+        }
+
+        main {
+            padding: 1rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            overflow: hidden;
+        }
+
+        main > section {
+            height: fit-content;
+            padding: 1rem;
+            border: 0.2rem solid #636363;
+            border-radius: 1rem;
+        }
+
+        main > section h2 {
+            margin-bottom: 1rem;
+        }
+
+        #visualizers {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-evenly;
+        }
+
+        #visualizers canvas {
+            width: 500px;
+            height: 500px;
+            border: 0.1rem solid #404040;
+        }
+
+        #configuration {
+        }
+
+        #configuration > div {
+            display: flex;
+            gap: 1rem;
+        }
+
+        #configuration > div> div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        #configuration > div > div > label {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        input {
+            border: 0.05rem solid #ffffff;
+            outline: none;
+            padding: 0.25rem 0 0.25rem 0.5rem;
+            background: #000000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Celica Fitment Visualizer</h1>
+</header>
+<main>
+    <section id="visualizers">
+        <div>
+            <h2>Cross-section</h2>
+            <canvas id="cross-section"></canvas>
+        </div>
+        <div>
+            <h2>Wheel Arch</h2>
+            <canvas id="wheel-arch"></canvas>
+        </div>
+    </section>
+    <section id="configuration">
+        <h2>Configuration</h2>
+        <div>
+            <div>
+                <h3>Wheel</h3>
+                <label>Wheel Diameter (inches)<input type="number" id="wheelDiameter" min="13" max="22" step="1"></label>
+                <label>Wheel Width (inches)<input type="number" id="wheelWidth" min="5" max="11" step="0.5"></label>
+                <label>Wheel Offset - ET (mm)<input type="number" id="wheelOffset" min="-20" max="60" step="1"></label>
+                <h3>Tire</h3>
+                <label>Tire Width (mm)<input type="number" id="tireWidth"></label>
+                <label>Tire Aspect Ratio (%)<input type="number" id="tireAspectRatio"></label>
+            </div>
+            <div>
+                <h3>Suspension</h3>
+                <label>Camber (Degrees)<input type="number" id="suspensionCamber" min="-10" max="10" step="0.1"></label>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="src/index.js" type="module"></script>
+</body>
+</html>
