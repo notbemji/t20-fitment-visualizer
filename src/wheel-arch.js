@@ -10,6 +10,8 @@ const canvas = $('wheel-arch');
 canvas.height = 500;
 canvas.width = 500;
 
+const fenderImage = new Image();
+
 /**
  * @type {RenderingContext}
  */
@@ -22,9 +24,16 @@ export const draw = () => {
 
     camber = Math.cos(configurations.suspension.camber * Math.PI / 180);
 
+    drawGround();
     drawWheel();
     drawTire();
-    drawGround();
+
+    if ('' === fenderImage.src) {
+        fenderImage.src = '../img/fender_rear.png';
+        fenderImage.onload = () => drawFender();
+    } else {
+        drawFender();
+    }
 };
 
 const drawWheel = () => {
@@ -91,4 +100,10 @@ const drawGround = () => {
     ctx.moveTo(0, canvas.height / 2 + y);
     ctx.lineTo(canvas.width, canvas.height / 2 + y);
     ctx.stroke();
+};
+
+const drawFender = () => {
+    ctx.save();
+    ctx.drawImage(fenderImage, -25, -25);
+    ctx.restore();
 };
